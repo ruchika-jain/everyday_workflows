@@ -1,0 +1,15 @@
+name: 'publish-action'
+on: # rebuild any PRs and main branch changes
+  workflow_dispatch:
+
+jobs:
+  package-and-publish: # make sure the action works on a clean machine without building
+    runs-on: ubuntu-latest    
+    steps:
+      - name: View the github context
+        run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+       
+      - name: Print something 
+        run: echo "Hey there!"
